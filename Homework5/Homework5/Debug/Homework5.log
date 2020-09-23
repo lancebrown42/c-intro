@@ -1,0 +1,17 @@
+﻿  Homework5.c
+c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(165): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(163): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(187): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(190): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(193): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(209): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(211): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(212): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(216): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(237): warning C4477: 'printf' : format string '%10d' requires an argument of type 'int', but variadic argument 2 has type 'unsigned __int64'
+  c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(237): note: consider using '%lld' in the format string
+  c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(237): note: consider using '%I64d' in the format string
+c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(237): warning C4477: 'printf' : format string '%10lu' requires an argument of type 'unsigned long', but variadic argument 4 has type 'unsigned __int64'
+  c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(237): note: consider using '%llu' in the format string
+  c:\users\lance\documents\code\c-intro\homework5\homework5\homework5.c(237): note: consider using '%I64u' in the format string
+  Homework5.vcxproj -> C:\Users\lance\Documents\code\c-intro\Homework5\Debug\Homework5.exe

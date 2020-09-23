@@ -20,12 +20,14 @@ int intMaxDiscount = 200;
 // Prototypes
 // ------------------------------------------------------------------------------------------
 void Instructions();
+bool ParseManagement(char strManagement[15]);
 // ------------------------------------------------------------------------------------------
 // Name: main
 // Abstract: This is where the program starts
 // ------------------------------------------------------------------------------------------
 void main( )
 {
+	bool blnContinue = true;
     int intYearsEmployed = 0;
     float fltPrevPurchases = 0;
     char strManagement[15];
@@ -37,7 +39,17 @@ void main( )
     float fltTotal = 0;
 
     Instructions();
-    printf("Enter ");
+	while (blnContinue)
+	{
+		printf("Enter your number of years employed as an integer");
+		scanf(" %d", &intYearsEmployed);
+		printf("Enter your previous purchases in XXX.XX format: $");
+		scanf(" %f", &fltPrevPurchases);
+		printf("Are you a manager? Y/N: ");
+		scanf(" %s", strManagement);
+		blnManagement = ParseManagement(strManagement);
+	}
+    
     
 
 
@@ -51,4 +63,27 @@ void main( )
 // ------------------------------------------------------------------------------------------
 void Instructions(){
     printf("This program will calculate a transaction total with a discount.\n");
+}
+
+
+
+// ------------------------------------------------------------------------------------------
+// Name: ParseManagement
+// Abstract: Converts user input to more usable bool
+// ------------------------------------------------------------------------------------------
+bool ParseManagement(char strManagement[15]) {
+	bool blnReturn = NULL;
+	if (strManagement[0] == "Y" || strManagement[0] == "y") {
+		blnReturn = true;
+	}
+	else if (strManagement[0] == "N" || strManagement[0] == "n") {
+		blnReturn = false
+	}
+	else
+	{
+		printf("Invalid input. Enter \"Y\" if you are a manager or \"N\" if you are not: ");
+		scanf(" %s", strManagement);
+		blnReturn = ParseManagement(strManagement);
+	}
+	return blnReturn;
 }
