@@ -7,6 +7,7 @@
 // ------------------------------------------------------------------------------------------
 // Includes
 // ------------------------------------------------------------------------------------------
+#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
@@ -34,9 +35,11 @@ void main( )
     bool blnManagement = NULL;
     float fltPurchase = 0;
     float fltYTDDiscount = 0;
-    float fltSubtotal = 0;
     float fltDiscount = 0;
     float fltTotal = 0;
+	float fltDailyTotal = 0;
+	float fltDailyDiscountedTotal = 0;
+
 
     Instructions();
 	while (blnContinue)
@@ -48,6 +51,12 @@ void main( )
 		printf("Are you a manager? Y/N: ");
 		scanf(" %s", strManagement);
 		blnManagement = ParseManagement(strManagement);
+		printf("Enter today's purchase amount in XXX.XX format: $");
+		scanf("%f", fltPurchase);
+		fltDiscount = CalculateDiscount(intYearsEmployed, fltPrevPurchases, blnManagement, fltPurchase);
+		fltTotal = CalculateTotal(fltPurchase, fltDiscount);
+
+		
 	}
     
     
@@ -86,4 +95,42 @@ bool ParseManagement(char strManagement[15]) {
 		blnReturn = ParseManagement(strManagement);
 	}
 	return blnReturn;
+}
+
+
+
+// ------------------------------------------------------------------------------------------
+// Name: CalculateDiscount
+// Abstract: Calculates discount for purchase
+// ------------------------------------------------------------------------------------------
+float CalculateDiscount(int intYearsEmployed, float fltPreviousPurchases, bool blnManagement, float fltPurchase) {
+	float fltDiscountPercent = 0;
+	float fltDiscountDollars = 0;
+	if blnManagement{
+		fltDiscountPercent = arrDiscount[intYearsEmployed];
+	}
+	else {
+		fltDiscountPercent = arrDiscount[intYearsEmployed] - 0.1];
+	}
+	printf("Your discount percent is %.2f\%\n", fltDiscountPercent);
+	fltDiscountDollars = fltPurchase * fltDiscountPercent;
+	if (fltPreviousPurchases + fltDiscountDollars > 200) {
+		fltDiscountDollars = 200 - fltPreviousPurchases;
+		printf("You have reached your annual discount limit. ");
+	}
+	printf("Your discount is %f", fltDiscountDollars);
+	return fltDiscountDollars;
+}
+
+
+
+// ------------------------------------------------------------------------------------------
+// Name: CalculateTotal
+// Abstract: Calculates total with discount
+// ------------------------------------------------------------------------------------------
+float CalculateTotal(float fltPurchase, float fltDiscount, float* psngDailyTotal, float* psngDailyDiscountTotal) {
+	float fltTotal = fltPurchase - fltDiscount;
+	*psngDailyDiscountTotal += fltTotal;
+	*psngDailyTotal += fltPurchase;
+	return fltTotal
 }
