@@ -15,34 +15,33 @@
 // ------------------------------------------------------------------------------------------
 // Constants
 // ------------------------------------------------------------------------------------------
-double arrDiscount[16] = { .2,.2,.2,.24,.24,.24,.3,.3,.3,.3,.35,.35,.35,.35,.35,.40 };
+float arrDiscount[16] = { .2,.2,.2,.24,.24,.24,.3,.3,.3,.3,.35,.35,.35,.35,.35,.40 };
 int intMaxDiscount = 200;
 // ------------------------------------------------------------------------------------------
 // Prototypes
 // ------------------------------------------------------------------------------------------
 void Instructions();
-bool ParseBoolean(char* strManagement);
+bool ParseBoolean(char* strBooleanInput);
 float CalculateDiscount(int intYearsEmployed, float fltPreviousPurchases, bool blnManagement, float fltPurchase);
-float CalculateTotal(float fltPurchase, float fltDiscount, float* psngDailyTotal, float* psngDailyDiscountTotal);
+float CalculateTotal(float fltPurchase, float fltDiscount);
 // ------------------------------------------------------------------------------------------
 // Name: main
 // Abstract: This is where the program starts
 // ------------------------------------------------------------------------------------------
+float fltDailyTotal = 0;
+float fltDailyDiscountedTotal = 0;
 void main()
 {
 	bool blnContinue = true;
 	int intYearsEmployed = 0;
 	float fltPrevPurchases = 0;
-	char* strManagement[1];
-	bool blnManagement = NULL;
+	char* strManagement[2];
+	bool blnManagement;
 	float fltPurchase = 0;
 	float fltYTDDiscount = 0;
 	float fltDiscount = 0;
 	float fltTotal = 0;
-	float fltDailyTotal = 0;
-	float fltDailyDiscountedTotal = 0;
-	char* strContinue[1];
-
+	char* strContinue[2];
 	Instructions();
 	while (blnContinue)
 	{
@@ -56,14 +55,14 @@ void main()
 		printf("Enter today's purchase amount in XXX.XX format: $");
 		scanf("%f", &fltPurchase);
 		fltDiscount = CalculateDiscount(intYearsEmployed, fltPrevPurchases, blnManagement, fltPurchase);
-		fltTotal = CalculateTotal(fltPurchase, fltDiscount, &fltDailyTotal, &fltDailyDiscountedTotal);
+		fltTotal = CalculateTotal(fltPurchase, fltDiscount);
+		printf("Your total is $ %.2f \n", fltTotal);
 		printf("Is there another transaction? Y/N: ");
-		scanf("%s", &strContinue);
+		scanf(" %s", &strContinue);
 		blnContinue = ParseBoolean(strContinue);
 
 	}
-	printf("The daily total before discounts is \$%.2f and \$%.2f after discounts.\n");
-
+	printf("The daily total before discounts is $ %.2f and $ %.2f after discounts.\n", fltDailyTotal, fltDailyDiscountedTotal);
 
 
 }
@@ -85,7 +84,7 @@ void Instructions() {
 // Abstract: Converts user input to more usable bool
 // ------------------------------------------------------------------------------------------
 bool ParseBoolean(char* strBooleanInput) {
-	bool blnReturn = NULL;
+	bool blnReturn;
 	
 	if (strBooleanInput[0] == 'Y' || strBooleanInput[0] == 'y') {
 		blnReturn = true;
@@ -116,19 +115,19 @@ float CalculateDiscount(int intYearsEmployed, float fltPreviousPurchases, bool b
 		intYearsEmployed = 15;
 	}
 	if (blnManagement){
-		fltDiscountPercent = arrDiscount[intYearsEmployed - 1];
+		fltDiscountPercent = arrDiscount[intYearsEmployed];
 	}
 	else {
-		fltDiscountPercent = arrDiscount[intYearsEmployed - 1] - 0.1;
+		fltDiscountPercent = arrDiscount[intYearsEmployed] - 0.1;
 	}
-	printf("Your discount percent is %.2f\%\n", fltDiscountPercent);
+	printf("Your discount percent is %.2f%% \n", fltDiscountPercent);
 	fltPreviousDiscount = fltDiscountPercent * fltPreviousPurchases;
 	fltDiscountDollars = fltPurchase * fltDiscountPercent;
-	if (fltPreviousDiscount + fltDiscountDollars > 200) {
-		if (fltPreviousDiscount > 200) {
-			fltPreviousDiscount = 200;
+	if (fltPreviousDiscount + fltDiscountDollars > intMaxDiscount) {
+		if (fltPreviousDiscount > intMaxDiscount) {
+			fltPreviousDiscount = intMaxDiscount;
 		}
-		fltDiscountDollars = 200 - fltPreviousDiscount;
+		fltDiscountDollars = intMaxDiscount - fltPreviousDiscount;
 		printf("You have reached your annual discount limit. ");
 	}
 	printf("Your discount is %.2f\n", fltDiscountDollars);
@@ -141,9 +140,9 @@ float CalculateDiscount(int intYearsEmployed, float fltPreviousPurchases, bool b
 // Name: CalculateTotal
 // Abstract: Calculates total with discount
 // ------------------------------------------------------------------------------------------
-float CalculateTotal(float fltPurchase, float fltDiscount, float* psngDailyTotal, float* psngDailyDiscountTotal) {
+float CalculateTotal(float fltPurchase, float fltDiscount) {
 	float fltTotal = fltPurchase - fltDiscount;
-	*psngDailyDiscountTotal += fltTotal;
-	*psngDailyTotal += fltPurchase;
+	fltDailyDiscountedTotal += fltTotal;
+	fltDailyTotal += fltPurchase;
 	return fltTotal;
 }
