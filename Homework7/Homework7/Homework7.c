@@ -10,7 +10,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<stdlib.h>
-#include<stdbool.h>
+
 
 // ------------------------------------------------------------------------------------------
 // Constants
@@ -40,6 +40,9 @@ void main()
 	char strDestination[50] = "";
 	char chrLetterToSearch = 83;
 	int intCharIndex = 0;
+	int intStartIndex = 2;
+	int intSliceLength = 5;
+	int intCount = 0;
 	//Problem 1: String Length
 	intLength = StringLength(strSource);
 	printf("Problem#1: String Length: %d\n", intLength);
@@ -62,15 +65,19 @@ void main()
 	printf("Problem#5: The apended string is %s\n", strDestination);
 
 	//Problem6: StringReverse
-	
+	memset(strDestination, NULL, StringLength(strDestination) * sizeof(char));
 	StringReverse(strDestination, strSource);
 	printf("Problem#6: The reversed string is %s\n", strDestination);
 	//Problem7: StringToUpper
-
+	StringToUpper(strDestination, strSource);
+	printf("Problem#7: The capitalized string is %s\n", strDestination);
 	//Problem8: StringSlice
-
+	memset(strDestination, NULL, StringLength(strDestination) * sizeof(char));
+	StringSlice(strDestination, strSource, intStartIndex, intSliceLength);
+	printf("The segment of the string is \"%s\"\n", strDestination);
 	//Problem9: WordCount
-
+	intCount= WordCount(strSource);
+	printf("There are %d words in the string", intCount);
 	
 
 }
@@ -132,10 +139,6 @@ int LetterFind(char strSource[50], char chrLetterToFind) {
 int InsensitiveLetterFind(char strSource[50], char chrLetterToFind) {
 	int intIndex = 0;
 	int intLetterIndex = -1;
-	bool blnUpper = true;
-	if (chrLetterToFind >= 97 && chrLetterToFind <= 122) {
-		blnUpper = false;
-	}
 	while (strSource[intIndex] != 0 && intLetterIndex == -1) {
 		if (strSource[intIndex] == chrLetterToFind) {
 			intLetterIndex = intIndex;
@@ -192,6 +195,7 @@ void StringToUpper(char strDestination[50], char strSource[50]) {
 		else {
 			strDestination[intIndex] = strSource[intIndex];
 		}
+		intIndex++;
 	}
 }
 
@@ -203,7 +207,7 @@ void StringToUpper(char strDestination[50], char strSource[50]) {
 void StringSlice(char strDestination[50], char strSource[50], int intStartIndex, int intLength) {
 	int intSourceIndex = intStartIndex;
 	int intDestinationIndex = 0;
-	while (strSource[intSourceIndex] != 0 && intSourceIndex <= (intStartIndex + intLength)) {
+	while (strSource[intSourceIndex] != 0 && intSourceIndex < (intStartIndex + intLength)) {
 		strDestination[intDestinationIndex] = strSource[intSourceIndex];
 		intDestinationIndex++;
 		intSourceIndex++;
@@ -222,6 +226,7 @@ int WordCount(char strSource[50]) {
 		if (strSource[intIndex] == ' ' && strSource[intIndex + 1] != ' '){
 			intWords++;
 		}
+		intIndex++;
 	}
 	return intWords;
 }
