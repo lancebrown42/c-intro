@@ -1,0 +1,3 @@
+﻿  Homework7.c
+C:\Users\lance\Documents\code\c-intro\Homework7\Homework7\Homework7.c(61,8): warning C4013: 'memset' undefined; assuming extern returning int
+  Homework7.vcxproj -> C:\Users\lance\Documents\code\c-intro\Homework7\Debug\Homework7.exe
