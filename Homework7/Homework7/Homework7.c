@@ -45,7 +45,7 @@ void main()
 
 	//Problem 2: CopyString
 	CopyString(strDestination, strSource);
-	printf("Problem#2: Original string: ");
+	printf("Problem#2: Original string: %s... Copied String: %s\n", strSource, strDestination);
 
 	//Problem3: LetterFind
 
