@@ -35,28 +35,36 @@ int WordCount(char strSource[50]);
 // ------------------------------------------------------------------------------------------
 void main()
 {
-	char strSource[50] = "This is a string\n";
+	char strSource[50] = "This is a String\n";
 	int intLength = 0;
 	char strDestination[50] = "";
-
+	char chrLetterToSearch = 83;
+	int intCharIndex = 0;
 	//Problem 1: String Length
 	intLength = StringLength(strSource);
 	printf("Problem#1: String Length: %d\n", intLength);
 
 	//Problem 2: CopyString
 	CopyString(strDestination, strSource);
-	printf("Problem#2: Original string: %s... Copied String: %s\n", strSource, strDestination);
+	printf("Problem#2: Original string: %s Copied String: %s\n", strSource, strDestination);
 
 	//Problem3: LetterFind
-
+	
+	intCharIndex  = LetterFind(strSource, chrLetterToSearch);
+	printf("Problem#3: The letter %c is at index %d\n", chrLetterToSearch, intCharIndex);
 
 	//Problem4: InsensitiveLetterFind
-
+	intCharIndex = InsensitiveLetterFind(strSource, chrLetterToSearch);
+	printf("Problem#4: The letter %c is at index %d\n", chrLetterToSearch, intCharIndex);
 
 	//Problem5: StringAppend
+	StringAppend(strDestination, strSource);
+	printf("Problem#5: The apended string is %s\n", strDestination);
 
 	//Problem6: StringReverse
-
+	
+	StringReverse(strDestination, strSource);
+	printf("Problem#6: The reversed string is %s\n", strDestination);
 	//Problem7: StringToUpper
 
 	//Problem8: StringSlice
