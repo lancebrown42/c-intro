@@ -1,0 +1,20 @@
+﻿  Homework8.c
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(159): warning C4090: 'function': different 'const' qualifiers
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(159): warning C4028: formal parameter 1 different from declaration
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(159): warning C4028: formal parameter 2 different from declaration
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(322): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(326): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(332): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(339): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(345): warning C4047: '==': 'int' differs in levels of indirection from 'void *'
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(346): warning C4047: '=': 'char' differs in levels of indirection from 'void *'
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(367): warning C4047: 'function': 'const char *' differs in levels of indirection from 'char (*)[50]'
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(367): warning C4024: 'strcmp': different types for formal and actual parameter 2
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(367): warning C4047: 'function': 'const char *' differs in levels of indirection from 'char (*)[100]'
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(385): warning C4047: 'function': 'const char *' differs in levels of indirection from 'char (*)[50]'
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(385): warning C4024: 'strcmp': different types for formal and actual parameter 1
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(385): warning C4024: 'strcmp': different types for formal and actual parameter 2
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(387): warning C4047: 'function': 'const char *' differs in levels of indirection from 'char (*)[50]'
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(387): warning C4024: 'strcmp': different types for formal and actual parameter 1
+c:\users\lance\documents\code\c-intro\homework8\homework8.c(387): warning C4024: 'strcmp': different types for formal and actual parameter 2
+  Homework8.vcxproj -> C:\Users\lance\Documents\code\c-intro\Debug\Homework8.exe
