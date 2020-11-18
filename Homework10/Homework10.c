@@ -18,7 +18,7 @@
 // ------------------------------------------------------------------------------------------
 // Prototypes
 // ------------------------------------------------------------------------------------------
-int ValidateInput(int intInput);
+int ValidateInput();
 // ------------------------------------------------------------------------------------------
 // Name: main
 // Abstract: This is where the program starts
@@ -26,22 +26,20 @@ int ValidateInput(int intInput);
 void main()
 {
 	int intArrSize = 0;
+	int arrArray[] = 0;
+	int intIndex = 0;
+	int intInput = 0;
 	printf("Enter an integer to size the array:\n");
-	if (scanf(" %d", &intArrSize) == 1 && ValidateInput(intArrSize)== 1) {
-
+	intArrSize = ValidateInput();
+	malloc(arrArray, intArrSize * sizeof(int));
+	while (intIndex < intArrSize) {
+		arrArray[intIndex] = 0;
+		intIndex++;
 	}
-	else
-	{
-		while (ValidateInput(intArrSize) != 1)
-		{
-			
-			printf("Enter a valid input:\n");
-			scanf(" %d", &intArrSize);
-			system("pause");
-			
-		}
-		
-
+	intIndex = 0;
+	while (intIndex < intArrSize) {
+		printf("Enter integer %d: ", intIndex + 1);
+		arrArray[intIndex] = ValidateInput();
 	}
 	
 }
@@ -52,10 +50,18 @@ void main()
 // Name: ValidateInput
 // Abstract: ensures input is valid
 // ------------------------------------------------------------------------------------------
-int ValidateInput(int intInput) {
+int ValidateInput() {
 	int intReturn = 0;
-	if (intInput > 0 && intInput < 100000 && intInput) {
-		intReturn = 1;
+	int intInput = 0;
+	int intScan = 0;
+	
+	intScan = scanf(" %d", &intInput);
+	if (intInput > 0 && intInput < 100000 && intScan == 1) {
+		intReturn = intInput;
+	}
+	else {
+		printf("Enter an integer between 1 and 100000:\n");
+		intReturn = ValidateInput();
 	}
 	return intReturn;
 }
