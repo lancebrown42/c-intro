@@ -44,7 +44,7 @@ void main()
 	unsigned int intInput = 0;
 	int* arrArray = malloc(sizeof(int));
 	//1
-	intArrSize = AllocateArray(arrArray);
+	intArrSize = AllocateArray(&arrArray);
 	//2
 	InitializeArray(arrArray, intArrSize);
 	//3
@@ -60,9 +60,10 @@ void main()
 	//8
 	printf("The standard deviation is %f\n", ArrayStdDev(arrArray, intArrSize));
 	//9
-	AddValueToEnd(arrArray, &intArrSize, 10);
-	printf("address before print in main: %p\n", arrArray);
-
+	printf("Size: %d\n", sizeof(arrArray));
+	AddValueToEnd(&arrArray, &intArrSize, 10);
+	//printf("address before print in main: %p\n", arrArray);
+	system("pause");
 	PrintArray(arrArray, intArrSize);
 	////10
 	//AddValueToFront(&arrArray, &intArrSize, 10);
@@ -104,11 +105,11 @@ int ValidateInput() {
 // Name: AllocateArray
 // Abstract: allocates array
 // ------------------------------------------------------------------------------------------
-int AllocateArray(int *arrArray) {
+int AllocateArray(int **arrArray) {
 	int intArrSize = 0;
 	printf("Enter an integer to size the array:\n");
 	intArrSize = ValidateInput();
-	arrArray = malloc(intArrSize * sizeof(int));
+	*arrArray = realloc(*arrArray, intArrSize * sizeof(int));
 	return intArrSize;
 }
 
@@ -238,7 +239,18 @@ double ArrayStdDev(int *arrArray, int intArrSize) {
 // Abstract: appends value
 // ------------------------------------------------------------------------------------------
 void AddValueToEnd(int** arrArray, int* intArrSize, int intValueToAdd) {
-	int intIndex = 0;
+	(*intArrSize)++;
+	printf("*pointer %p\n", *arrArray);
+	printf("arrsize: %d\n", *intArrSize);
+	*arrArray = (int*) realloc(*arrArray, *intArrSize);
+	printf("*pointer %p\n", *arrArray);
+	system("pause");
+	PrintArray(*arrArray, *intArrSize);
+	if (arrArray != NULL) {
+		*arrArray[*intArrSize - 1] = intValueToAdd;
+
+	}
+	/*int intIndex = 0;
 	int* arrBigger = malloc((*intArrSize + 1) * sizeof(int));
 	while (arrArray[intIndex] != NULL) {
 		arrBigger[intIndex] = arrArray[intIndex];
@@ -247,12 +259,11 @@ void AddValueToEnd(int** arrArray, int* intArrSize, int intValueToAdd) {
 	arrBigger[*intArrSize] = intValueToAdd;
 	printf("%d\n", arrBigger[*intArrSize]);
 	printf("Address before change: %p\n", arrArray);
-	arrArray = arrBigger;
+	arrArray = &arrBigger;
 	printf("Address after change: %d\n", arrArray[*intArrSize]);
 	PrintArray(arrArray, *intArrSize + 1);
-	printf("Address after print in fx: %p\n", arrArray);
+	printf("Address after print in fx: %p\n", arrArray);*/
 
-	(*intArrSize)++;
 
 
 }
