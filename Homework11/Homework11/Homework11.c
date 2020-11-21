@@ -61,16 +61,18 @@ void main()
 	printf("The standard deviation is %f\n", ArrayStdDev(arrArray, intArrSize));
 	//9
 	AddValueToEnd(arrArray, &intArrSize, 10);
+	printf("address before print in main: %p\n", arrArray);
+
 	PrintArray(arrArray, intArrSize);
-	//10
-	AddValueToFront(&arrArray, &intArrSize, 10);
-	PrintArray(arrArray, intArrSize);
-	//11
-	InsertValueAt(&arrArray, &intArrSize, 10, 2);
-	PrintArray(arrArray, intArrSize);
-	//12
-	RemoveAt(&arrArray, &intArrSize, 3);
-	PrintArray(arrArray, intArrSize);
+	////10
+	//AddValueToFront(&arrArray, &intArrSize, 10);
+	//PrintArray(arrArray, intArrSize);
+	////11
+	//InsertValueAt(&arrArray, &intArrSize, 10, 2);
+	//PrintArray(arrArray, intArrSize);
+	////12
+	//RemoveAt(&arrArray, &intArrSize, 3);
+	//PrintArray(arrArray, intArrSize);
 	
 
 }
@@ -236,15 +238,23 @@ double ArrayStdDev(int *arrArray, int intArrSize) {
 // Abstract: appends value
 // ------------------------------------------------------------------------------------------
 void AddValueToEnd(int** arrArray, int* intArrSize, int intValueToAdd) {
-	*intArrSize++;
-	printf("%d\n", arrArray[0]);
-	*arrArray = (int * ) realloc(arrArray, *intArrSize  * sizeof(int));
-	printf("%d\n", arrArray[0]);
-	printf("%d\n", arrArray[1]);
-	printf("%d\n", arrArray[2]);
-	printf("%d\n", arrArray[3]);
-	printf("%d\n", sizeof(arrArray));
-	arrArray[*intArrSize - 1] = intValueToAdd;
+	int intIndex = 0;
+	int* arrBigger = malloc((*intArrSize + 1) * sizeof(int));
+	while (arrArray[intIndex] != NULL) {
+		arrBigger[intIndex] = arrArray[intIndex];
+		intIndex++;
+	}
+	arrBigger[*intArrSize] = intValueToAdd;
+	printf("%d\n", arrBigger[*intArrSize]);
+	printf("Address before change: %p\n", arrArray);
+	arrArray = arrBigger;
+	printf("Address after change: %d\n", arrArray[*intArrSize]);
+	PrintArray(arrArray, *intArrSize + 1);
+	printf("Address after print in fx: %p\n", arrArray);
+
+	(*intArrSize)++;
+
+
 }
 
 
@@ -255,7 +265,7 @@ void AddValueToEnd(int** arrArray, int* intArrSize, int intValueToAdd) {
 // ------------------------------------------------------------------------------------------
 void AddValueToFront(int** arrArray, int* intArrSize, int intValueToAdd) {
 	int intIndex = 1;
-	arrArray = malloc((*intArrSize + 1) * sizeof(int));
+	arrArray = realloc(&arrArray, (*intArrSize + 1) * sizeof(int));
 	intArrSize++;
 	while (intIndex < *intArrSize) {
 		arrArray[intIndex] = *arrArray[intIndex - 1];
