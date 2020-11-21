@@ -1,12 +1,2 @@
 ﻿  Homework11.c
-c:\users\lance\documents\code\c-intro\homework11\homework11\homework11.c(63): warning C4047: 'function': 'int **' differs in levels of indirection from 'int *'
-c:\users\lance\documents\code\c-intro\homework11\homework11\homework11.c(63): warning C4024: 'AddValueToEnd': different types for formal and actual parameter 1
-c:\users\lance\documents\code\c-intro\homework11\homework11\homework11.c(240): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'int *'
-c:\users\lance\documents\code\c-intro\homework11\homework11\homework11.c(242): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'int *'
-c:\users\lance\documents\code\c-intro\homework11\homework11\homework11.c(243): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'int *'
-c:\users\lance\documents\code\c-intro\homework11\homework11\homework11.c(244): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'int *'
-c:\users\lance\documents\code\c-intro\homework11\homework11\homework11.c(245): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'int *'
-c:\users\lance\documents\code\c-intro\homework11\homework11\homework11.c(247): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
-c:\users\lance\documents\code\c-intro\homework11\homework11\homework11.c(261): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
-c:\users\lance\documents\code\c-intro\homework11\homework11\homework11.c(263): warning C4047: '=': 'int *' differs in levels of indirection from 'int'
   Homework11.vcxproj -> C:\Users\lance\Documents\code\c-intro\Homework11\Debug\Homework11.exe

@@ -20,7 +20,7 @@
 // Prototypes
 // ------------------------------------------------------------------------------------------
 int ValidateInput();
-int AllocateArray(int *arrArray);
+int AllocateArray(int **arrArray);
 void InitializeArray(int *arrArray, int intArrSize);
 void PopulateArray(int *arrArray, int intArrSize);
 void PrintArray(int *arrArray, int intArrSize);
@@ -42,7 +42,7 @@ void main()
 	int intArrSize = 0;
 	int intIndex = 0;
 	unsigned int intInput = 0;
-	int* arrArray = malloc(sizeof(int));
+	int* arrArray;
 	//1
 	intArrSize = AllocateArray(&arrArray);
 	//2
@@ -60,20 +60,21 @@ void main()
 	//8
 	printf("The standard deviation is %f\n", ArrayStdDev(arrArray, intArrSize));
 	//9
-	printf("Size: %d\n", sizeof(arrArray));
 	AddValueToEnd(&arrArray, &intArrSize, 10);
-	//printf("address before print in main: %p\n", arrArray);
-	system("pause");
+	printf("The array with a value appended is:\n");
 	PrintArray(arrArray, intArrSize);
-	////10
-	//AddValueToFront(&arrArray, &intArrSize, 10);
-	//PrintArray(arrArray, intArrSize);
-	////11
-	//InsertValueAt(&arrArray, &intArrSize, 10, 2);
-	//PrintArray(arrArray, intArrSize);
+	//10
+	printf("The array with a value prepended is:\n");
+	AddValueToFront(&arrArray, &intArrSize, 10);
+	PrintArray(arrArray, intArrSize);
+	//11
+	printf("The array with a value inserted is:\n");
+	InsertValueAt(&arrArray, &intArrSize, 10, 2);
+	PrintArray(arrArray, intArrSize);
 	////12
-	//RemoveAt(&arrArray, &intArrSize, 3);
-	//PrintArray(arrArray, intArrSize);
+	printf("The array with a value removed is:\n");
+	RemoveAt(&arrArray, &intArrSize, 3);
+	PrintArray(arrArray, intArrSize);
 	
 
 }
@@ -109,7 +110,7 @@ int AllocateArray(int **arrArray) {
 	int intArrSize = 0;
 	printf("Enter an integer to size the array:\n");
 	intArrSize = ValidateInput();
-	*arrArray = realloc(*arrArray, intArrSize * sizeof(int));
+	*arrArray = malloc(intArrSize * sizeof(int));
 	return intArrSize;
 }
 
@@ -240,32 +241,8 @@ double ArrayStdDev(int *arrArray, int intArrSize) {
 // ------------------------------------------------------------------------------------------
 void AddValueToEnd(int** arrArray, int* intArrSize, int intValueToAdd) {
 	(*intArrSize)++;
-	printf("*pointer %p\n", *arrArray);
-	printf("arrsize: %d\n", *intArrSize);
-	*arrArray = (int*) realloc(*arrArray, *intArrSize);
-	printf("*pointer %p\n", *arrArray);
-	system("pause");
-	PrintArray(*arrArray, *intArrSize);
-	if (arrArray != NULL) {
-		*arrArray[*intArrSize - 1] = intValueToAdd;
-
-	}
-	/*int intIndex = 0;
-	int* arrBigger = malloc((*intArrSize + 1) * sizeof(int));
-	while (arrArray[intIndex] != NULL) {
-		arrBigger[intIndex] = arrArray[intIndex];
-		intIndex++;
-	}
-	arrBigger[*intArrSize] = intValueToAdd;
-	printf("%d\n", arrBigger[*intArrSize]);
-	printf("Address before change: %p\n", arrArray);
-	arrArray = &arrBigger;
-	printf("Address after change: %d\n", arrArray[*intArrSize]);
-	PrintArray(arrArray, *intArrSize + 1);
-	printf("Address after print in fx: %p\n", arrArray);*/
-
-
-
+	*arrArray = (int*) realloc(*arrArray, *intArrSize * sizeof(int));
+	(*arrArray)[(*intArrSize) - 1] = intValueToAdd;
 }
 
 
@@ -275,13 +252,14 @@ void AddValueToEnd(int** arrArray, int* intArrSize, int intValueToAdd) {
 // Abstract: prepend value
 // ------------------------------------------------------------------------------------------
 void AddValueToFront(int** arrArray, int* intArrSize, int intValueToAdd) {
-	int intIndex = 1;
-	arrArray = realloc(&arrArray, (*intArrSize + 1) * sizeof(int));
-	intArrSize++;
-	while (intIndex < *intArrSize) {
-		arrArray[intIndex] = *arrArray[intIndex - 1];
+	int intIndex = *intArrSize;
+	(*intArrSize)++;
+	*arrArray = (int*)realloc(*arrArray, *intArrSize * sizeof(int));
+	while (intIndex > 0) {
+		(*arrArray)[intIndex] = (*arrArray)[intIndex - 1];
+		intIndex--;
 	}
-	arrArray[0] = intValueToAdd;
+	(*arrArray)[0] = intValueToAdd;
 }
 
 
@@ -290,7 +268,14 @@ void AddValueToFront(int** arrArray, int* intArrSize, int intValueToAdd) {
 // Abstract: insert value at index
 // ------------------------------------------------------------------------------------------
 void InsertValueAt(int** arrArray, int* intArrSize, int intValueToInsert, int intInsertIndex) {
-
+	int intIndex = *intArrSize;
+	(*intArrSize)++;
+	*arrArray = (int*)realloc(*arrArray, *intArrSize * sizeof(int));
+	while (intIndex > intInsertIndex) {
+		(*arrArray)[intIndex] = (*arrArray)[intIndex - 1];
+		intIndex--;
+	}
+	(*arrArray)[intInsertIndex] = intValueToInsert;
 
 }
 
@@ -300,5 +285,11 @@ void InsertValueAt(int** arrArray, int* intArrSize, int intValueToInsert, int in
 // Abstract: remove value at index
 // ------------------------------------------------------------------------------------------
 void RemoveAt(int** arrArray, int* intArrSize, int intRemoveIndex) {
-
+	int intIndex = intRemoveIndex;
+	while (intIndex < *intArrSize) {
+		(*arrArray)[intIndex] = (*arrArray)[intIndex + 1];
+		intIndex++;
+	}
+	(*intArrSize)--;
+	*arrArray = (int*)realloc(*arrArray, *intArrSize * sizeof(int));
 }
