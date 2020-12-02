@@ -1,0 +1,2 @@
+C:\Users\lance\code\c-intro\Final\Debug\Final.exe
+C:\Users\lance\code\c-intro\Final\Debug\Final.pdb

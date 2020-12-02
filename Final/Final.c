@@ -31,10 +31,12 @@ typedef struct {
 // Prototypes
 // ------------------------------------------------------------------------------------------
 FILE* OpenFile();
-int GetInputs(udtSurveyType** audSurveyList);
+udtSurveyType GetInputs(udtSurveyType** audSurveyList);
 int ValidateDate(int* intMonth, int* intDay, int* intYear);
-int ValidateState(char** strState);
-int ValidateCounty(char** strCounty, char* strState);
+void ValidateState(int* intState, char** strState);
+void ValidateCounty(char** strCounty, char* strState);
+void ValidateRace(char** strRace);
+void ValidateHouseholdMembers(int* intHouseholdMembers);
 
 // ------------------------------------------------------------------------------------------
 // Name: main
@@ -88,12 +90,20 @@ FILE* OpenFile() {
 // Name: GetInputs
 // Abstract: Receives inputs from the user
 // ------------------------------------------------------------------------------------------
-int GetInputs(udtSurveyType** audtSurveyList) {
+udtSurveyType GetInputs(udtSurveyType** audtSurveyList) {
 	int intMonth = 0;
 	int intDay = 0;
 	int intYear = 0;
-	char* strState = "";
-	char* strCounty = "";
+	int intState = 0;
+	int intRace = 0;
+	int intHouseholdMembers = 0;
+
+	char* strState = malloc(8 * sizeof(char));
+	char* strCounty = malloc(8 * sizeof(char));
+	char* strRace = malloc(20 * sizeof(char));
+
+	float fltIncome = 0;
+
 	printf("***************************************************\n");
 	printf("**=====================Survey====================**\n");
 	printf("Enter each of the following values and press Enter\n");
@@ -107,12 +117,15 @@ int GetInputs(udtSurveyType** audtSurveyList) {
 			ValidateDate(&intMonth, &intDay, &intYear);
 		}
 	}
-	printf("** State (OH or KY): ");
-	scanf(" %s", strState);
-	ValidateState(&strState);
-	printf("** County:");
-	scanf(" %s", strCounty);
+	ValidateState(&intState, &strState);
 	ValidateCounty(&strCounty, strState);
+	ValidateRace(&strRace);
+	ValidateHouseholdMembers(&intHouseholdMembers);
+	ValidateIncome(&fltIncome);
+	
+	free(strState);
+	free(strCounty);
+	free(strRace);
 	
 }
 
@@ -149,17 +162,19 @@ int ValidateDate(int* intMonth, int* intDay, int* intYear) {
 // Name: ValidateState
 // Abstract: validates state inputs
 // ------------------------------------------------------------------------------------------
-int ValidateState(char** strState) {
-	if (*strState[0] == "O" || *strState[0] == "o") {
+void ValidateState(int* intState, char** strState) {
+	printf("** State: \n   1) Ohio\n   2) Kentucky\n");
+	scanf(" %d", intState);
+	if (*intState == 1) {
 		*strState = "Ohio";
 	}
-	else if (*strState[0] == "K" || *strState[0] == "k") {
+	else if (*intState== 2) {
 		*strState = "Kentucky";
 	}
 	else {
-		printf("Invalid State. Enter OH or KY: ");
-		scanf(" %s", &strState);
-		ValidateState(&strState);
+		printf("*** Invalid State.***\n Enter 1 for OH or 2 for KY: ");
+		scanf(" %d", intState);
+		ValidateState(&intState, &strState);
 	}
 }
 
@@ -169,33 +184,108 @@ int ValidateState(char** strState) {
 // Name: ValidateCounty
 // Abstract: validates county inputs
 // ------------------------------------------------------------------------------------------
-int ValidateCounty(char** strCounty, char* strState) {
-	int intReturn = 0;
-	if (**strCounty == "Hamilton" || **strCounty == "Butler" || **strCounty == "Boone" || **strCounty == "Kenton") {
-		if (*strState == "Ohio") {
-			if (**strCounty != "Hamilton" && **strCounty != "Butler") {
-				printf("** County not valid for provided state. Please enter Hamilton or Butler: ");
-				scanf(" %s", &strCounty);
-				if (ValidateCounty(&strCounty, strState) == 1) {
-					intReturn = 1;
-				}
+void ValidateCounty(char** strCounty, char* strState) {
+	int intInput = 0;
+	printf("** County:\n");
+	if (strState == "Ohio") {
+
+		printf("   1) Hamilton\n   2) Butler\n");
+		if (scanf(" %d", &intInput) == 1) {
+			if (intInput == 1) {
+				*strCounty = "Hamilton";
+			}
+			else if (intInput == 2) {
+				*strCounty = "Butler";
 			}
 			else {
-				intReturn = 1;
+				printf("** Invalid selection.**\n");
+				ValidateCounty(strCounty, strState);
 			}
 		}
-		else if (*strState == "Kentucky") {
-			if (**strCounty != "Boone" && **strCounty != "Kenton") {
-				printf("** County not valid for provided state. Please enter Boone or Kenton: ");
-				scanf(" %s", &strCounty);
-				if (ValidateCounty(&strCounty, strState) == 1) {
-					intReturn = 1;
-				}
+		
+	}
+	else if (strState == "Kentucky") {
+		printf("   1) Boone\n   2) Kenton\n");
+		if (scanf(" %d", &intInput) == 1) {
+
+
+			if (intInput == 1) {
+				*strCounty = "Boone";
+			}
+			else if (intInput == 2) {
+				*strCounty = "Kenton";
 			}
 			else {
-				intReturn = 1;
+				printf("** Invalid selection.**\n");
+				ValidateCounty(strCounty, strState);
 			}
 		}
 	}
-	return intReturn;
+	else {
+		printf("******************State exception***************\n  State = %s", strState);
+	}
+	
+}
+
+
+
+// ------------------------------------------------------------------------------------------
+// Name: ValidateRace
+// Abstract: validates race inputs
+// ------------------------------------------------------------------------------------------
+void ValidateRace(char** strRace) {
+	int intRace;
+	printf("** Select the race of the head of house:\n   1)Caucasian\n   2)African American\n   3)Hispanic\n   4)Asian\n   5)Other\n");
+	scanf(" %d", &intRace);
+	switch (intRace)
+	{
+	case 1 : 
+		*strRace = "Caucasian";
+		break;
+	case 2:
+		*strRace = "African American";
+		break;
+	case 3:
+		*strRace = "Hispanic";
+		break;
+	case 4:
+		*strRace = "Asian";
+		break;
+	case 5:
+		*strRace = "Other";
+		break;
+	default:
+
+		printf("***Invalid selection****\n");
+		ValidateRace(strRace);
+	}
+}
+
+
+// ------------------------------------------------------------------------------------------
+// Name: ValidateHouseholdMembers
+// Abstract: validates household population inputs
+// ------------------------------------------------------------------------------------------
+void ValidateHouseholdMembers(int* intHouseholdMembers) {
+
+	printf("** Enter the number of people in the household: ");
+	scanf(" %d", intHouseholdMembers);
+	if (*intHouseholdMembers <= 0) {
+		printf("***Must be a positive integer***\n");
+		ValidateHouseholdMembers(intHouseholdMembers);
+	}
+}
+
+
+// ------------------------------------------------------------------------------------------
+// Name: ValidateIncome
+// Abstract: validates income inputs
+// ------------------------------------------------------------------------------------------
+void ValidateIncome(float* fltIncome) {
+	printf("** Enter the total annual income for the household: ");
+	scanf(" %f", fltIncome);
+	if (*fltIncome <= 0) {
+		printf("***Must be a positive number***\n");
+		ValidateIncome(fltIncome);
+	}
 }

@@ -1,0 +1,27 @@
+﻿  Final.c
+C:\Users\lance\code\c-intro\Final\Final.c(83,18): warning C4047: 'return': 'FILE *' differs in levels of indirection from 'FILE **'
+C:\Users\lance\code\c-intro\Final\Final.c(133,13): warning C4477: 'scanf' : format string '%d' requires an argument of type 'int *', but variadic argument 1 has type 'int **'
+C:\Users\lance\code\c-intro\Final\Final.c(133,13): warning C4477: 'scanf' : format string '%d' requires an argument of type 'int *', but variadic argument 2 has type 'int **'
+C:\Users\lance\code\c-intro\Final\Final.c(133,13): warning C4477: 'scanf' : format string '%d' requires an argument of type 'int *', but variadic argument 3 has type 'int **'
+C:\Users\lance\code\c-intro\Final\Final.c(134,30): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\code\c-intro\Final\Final.c(134,21): warning C4024: 'ValidateDate': different types for formal and actual parameter 1
+C:\Users\lance\code\c-intro\Final\Final.c(134,39): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\code\c-intro\Final\Final.c(134,32): warning C4024: 'ValidateDate': different types for formal and actual parameter 2
+C:\Users\lance\code\c-intro\Final\Final.c(134,49): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\code\c-intro\Final\Final.c(134,41): warning C4024: 'ValidateDate': different types for formal and actual parameter 3
+C:\Users\lance\code\c-intro\Final\Final.c(140,14): warning C4477: 'scanf' : format string '%d' requires an argument of type 'int *', but variadic argument 1 has type 'int **'
+C:\Users\lance\code\c-intro\Final\Final.c(140,14): warning C4477: 'scanf' : format string '%d' requires an argument of type 'int *', but variadic argument 2 has type 'int **'
+C:\Users\lance\code\c-intro\Final\Final.c(140,14): warning C4477: 'scanf' : format string '%d' requires an argument of type 'int *', but variadic argument 3 has type 'int **'
+C:\Users\lance\code\c-intro\Final\Final.c(141,31): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\code\c-intro\Final\Final.c(141,22): warning C4024: 'ValidateDate': different types for formal and actual parameter 1
+C:\Users\lance\code\c-intro\Final\Final.c(141,40): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\code\c-intro\Final\Final.c(141,33): warning C4024: 'ValidateDate': different types for formal and actual parameter 2
+C:\Users\lance\code\c-intro\Final\Final.c(141,50): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\code\c-intro\Final\Final.c(141,42): warning C4024: 'ValidateDate': different types for formal and actual parameter 3
+C:\Users\lance\code\c-intro\Final\Final.c(168,26): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\code\c-intro\Final\Final.c(168,17): warning C4024: 'ValidateState': different types for formal and actual parameter 1
+C:\Users\lance\code\c-intro\Final\Final.c(168,37): warning C4047: 'function': 'char **' differs in levels of indirection from 'char ***'
+C:\Users\lance\code\c-intro\Final\Final.c(168,28): warning C4024: 'ValidateState': different types for formal and actual parameter 2
+C:\Users\lance\code\c-intro\Final\Final.c(83): warning C4172: returning address of local variable or temporary: pfOutput
+C:\Users\lance\code\c-intro\Final\Final.c(121): warning C4716: 'GetInputs': must return a value
+  Final.vcxproj -> C:\Users\lance\code\c-intro\Final\Debug\Final.exe

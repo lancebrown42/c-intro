@@ -1,0 +1,4 @@
+﻿  Homework7.5.c
+C:\Users\lance\code\c-intro\Homework7.5\Homework7.5\Homework7.5.c(32,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\code\c-intro\Homework7.5\Homework7.5\Homework7.5.c(82,9): warning C4013: 'memset' undefined; assuming extern returning int
+  Homework7.5.vcxproj -> C:\Users\lance\code\c-intro\Homework7.5\Debug\Homework7.5.exe
