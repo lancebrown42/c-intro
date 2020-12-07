@@ -10,6 +10,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 // ------------------------------------------------------------------------------------------
 // Constants
@@ -31,12 +32,17 @@ typedef struct {
 // Prototypes
 // ------------------------------------------------------------------------------------------
 FILE* OpenFile();
-udtSurveyType GetInputs(udtSurveyType** audSurveyList);
+void AllocateArray(udtSurveyType** audtSurveyList);
+void GetInputs(udtSurveyType** audSurveyList, int intArrSize);
 int ValidateDate(int* intMonth, int* intDay, int* intYear);
+char* FormatDate(int intMonth, int intDay, int intYear);
 void ValidateState(int* intState, char** strState);
 void ValidateCounty(char** strCounty, char* strState);
 void ValidateRace(char** strRace);
 void ValidateHouseholdMembers(int* intHouseholdMembers);
+void ValidateIncome(float* fltIncome);
+void StringCopy(char strDestination[], char strSource[]);
+
 
 // ------------------------------------------------------------------------------------------
 // Name: main
@@ -46,8 +52,11 @@ void main()
 {
 	udtSurveyType* audtSurveyList;
 	int intListSize = 1;
-
-	GetInputs(&audtSurveyList);
+	AllocateArray(&audtSurveyList);
+	GetInputs(&audtSurveyList, intListSize);
+	for (int i = 0; i < intListSize; i++) {
+		printf("%s\n", audtSurveyList->strState);
+	}
 	FILE* pfOutput = OpenFile();
 	
 
@@ -67,8 +76,13 @@ void AllocateArray(udtSurveyType** audtSurveyList) {
 // Name: InitializeArray
 // Abstract: Initializes survey list
 // ------------------------------------------------------------------------------------------
-void InitializeArray() {
-
+void InitializeArray(udtSurveyType** audtSurveyList, int intListSize) {
+	int intIndex = 0;
+	for (intIndex = 0; intIndex < intListSize; intIndex += 1)
+	{
+		// Pass a single array element by pointer
+		//InitializeAddress(&audtSurveyList[intIndex]);
+	}
 }
 
 
@@ -90,7 +104,8 @@ FILE* OpenFile() {
 // Name: GetInputs
 // Abstract: Receives inputs from the user
 // ------------------------------------------------------------------------------------------
-udtSurveyType GetInputs(udtSurveyType** audtSurveyList) {
+void GetInputs(udtSurveyType** audtSurveyList, int intArrSize) {
+	
 	int intMonth = 0;
 	int intDay = 0;
 	int intYear = 0;
@@ -98,6 +113,8 @@ udtSurveyType GetInputs(udtSurveyType** audtSurveyList) {
 	int intRace = 0;
 	int intHouseholdMembers = 0;
 
+	
+	char* strDate;
 	char* strState = malloc(8 * sizeof(char));
 	char* strCounty = malloc(8 * sizeof(char));
 	char* strRace = malloc(20 * sizeof(char));
@@ -117,15 +134,26 @@ udtSurveyType GetInputs(udtSurveyType** audtSurveyList) {
 			ValidateDate(&intMonth, &intDay, &intYear);
 		}
 	}
+	strDate = FormatDate(intMonth, intDay, intYear);
 	ValidateState(&intState, &strState);
 	ValidateCounty(&strCounty, strState);
 	ValidateRace(&strRace);
 	ValidateHouseholdMembers(&intHouseholdMembers);
 	ValidateIncome(&fltIncome);
+	StringCopy(&audtSurveyList[intArrSize-1]->strDate,&strDate);
+	StringCopy(&audtSurveyList[intArrSize-1]->strState, &strState);
+	StringCopy(&audtSurveyList[intArrSize - 1]->strCounty, &strCounty);
+	StringCopy(&audtSurveyList[intArrSize - 1]->strRace, &strRace);
+	audtSurveyList[intArrSize - 1]->intHouseholdMembers= intHouseholdMembers;
+	audtSurveyList[intArrSize - 1]->fltIncome = fltIncome;
 	
+	system("pause");
+
+	//free(strDate);
 	free(strState);
 	free(strCounty);
 	free(strRace);
+	
 	
 }
 
@@ -154,6 +182,32 @@ int ValidateDate(int* intMonth, int* intDay, int* intYear) {
 		}
 	}
 	return intReturn;
+}
+
+
+
+// ------------------------------------------------------------------------------------------
+// Name: FormatDate
+// Abstract: formats date inputs
+// ------------------------------------------------------------------------------------------
+char* FormatDate(int intMonth, int intDay, int intYear) {
+	char* strDay = malloc(20 * sizeof(char));
+	char* strMonth = malloc(20 * sizeof(char));
+	char* strYear = malloc(20 * sizeof(char));
+	char* strDate = malloc(20 * sizeof(char));
+	sprintf(strDay, "%d", intDay);
+	sprintf(strMonth, "%d", intMonth);
+	sprintf(strYear, "%d", intYear);
+	strcat(strMonth, "/");
+	strcat(strMonth, strDay);
+	strcat(strMonth, "/");
+	strcat(strMonth, strYear);
+	strDate = strMonth;
+	free(strDay);
+	free(strMonth);
+	free(strYear);
+	//printf(strDate);
+	return(strDate);
 }
 
 
@@ -288,4 +342,23 @@ void ValidateIncome(float* fltIncome) {
 		printf("***Must be a positive number***\n");
 		ValidateIncome(fltIncome);
 	}
+}
+
+
+// ------------------------------------------------------------------------------------------
+// Name: StringCopy
+// Abstract: copies one string to another
+// ------------------------------------------------------------------------------------------
+void StringCopy(char** strDestination, char** strSource)
+{
+	int intIndex = 0;
+	// Copy each character
+	while (strSource[intIndex] != 0)
+	{
+		strDestination[intIndex] = strSource[intIndex];
+
+		intIndex += 1;
+	}
+	// Terminate
+	strDestination[intIndex] = 0;
 }
