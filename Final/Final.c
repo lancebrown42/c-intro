@@ -41,7 +41,7 @@ void ValidateCounty(char** strCounty, char* strState);
 void ValidateRace(char** strRace);
 void ValidateHouseholdMembers(int* intHouseholdMembers);
 void ValidateIncome(float* fltIncome);
-void StringCopy(char strDestination[], char strSource[]);
+void StringCopy(char* strDestination, char* strSource);
 
 
 // ------------------------------------------------------------------------------------------
@@ -58,6 +58,8 @@ void main()
 		printf("%s\n", audtSurveyList->strState);
 	}
 	FILE* pfOutput = OpenFile();
+	fputs("fputs test", pfOutput);
+	fprintf(pfOutput, "%s", audtSurveyList[0].strRace);
 	
 
 }
@@ -94,8 +96,8 @@ void InitializeArray(udtSurveyType** audtSurveyList, int intListSize) {
 // ------------------------------------------------------------------------------------------
 FILE* OpenFile() {
 	FILE* pfOutput;
-	pfOutput = fopen("survey.txt", "w");
-	return &pfOutput;
+	pfOutput = fopen("survey.txt", "w+");
+	return pfOutput;
 }
 
 
@@ -112,12 +114,13 @@ void GetInputs(udtSurveyType** audtSurveyList, int intArrSize) {
 	int intState = 0;
 	int intRace = 0;
 	int intHouseholdMembers = 0;
-
-	
+	char* strState;
+	char* strCounty;
+	char* strRace;
 	char* strDate;
-	char* strState = malloc(8 * sizeof(char));
-	char* strCounty = malloc(8 * sizeof(char));
-	char* strRace = malloc(20 * sizeof(char));
+	strState = (char* ) malloc(20 * sizeof(char));
+	strCounty =( char* ) malloc(20 * sizeof(char));
+	strRace = (char* ) malloc(20 * sizeof(char));
 
 	float fltIncome = 0;
 
@@ -140,19 +143,32 @@ void GetInputs(udtSurveyType** audtSurveyList, int intArrSize) {
 	ValidateRace(&strRace);
 	ValidateHouseholdMembers(&intHouseholdMembers);
 	ValidateIncome(&fltIncome);
-	StringCopy(&audtSurveyList[intArrSize-1]->strDate,&strDate);
-	StringCopy(&audtSurveyList[intArrSize-1]->strState, &strState);
-	StringCopy(&audtSurveyList[intArrSize - 1]->strCounty, &strCounty);
-	StringCopy(&audtSurveyList[intArrSize - 1]->strRace, &strRace);
+	/**audtSurveyList[intArrSize - 1]->strDate = strDate;
+	*audtSurveyList[intArrSize - 1]->strState = strState;
+	*audtSurveyList[intArrSize - 1]->strCounty = strCounty;
+	*audtSurveyList[intArrSize - 1]->strRace = strRace;*/
+	StringCopy(audtSurveyList[intArrSize-1]->strDate,strDate);
+	//printf("%s\n", strDate);
+	printf("Array: %s\n", audtSurveyList[intArrSize - 1]->strDate);
+	StringCopy(audtSurveyList[intArrSize-1]->strState, strState);
+	//printf("%s\n", strState);
+	printf("Array: %s\n", audtSurveyList[intArrSize - 1]->strState);
+	StringCopy(audtSurveyList[intArrSize - 1]->strCounty, strCounty);
+	//printf("%s\n", strCounty);
+	printf("Array: %s\n", audtSurveyList[intArrSize - 1]->strCounty);
+	StringCopy(audtSurveyList[intArrSize - 1]->strRace, strRace);
+	//printf("%s\n", strRace);
+	printf("Array: %s\n", audtSurveyList[intArrSize - 1]->strRace);
 	audtSurveyList[intArrSize - 1]->intHouseholdMembers= intHouseholdMembers;
 	audtSurveyList[intArrSize - 1]->fltIncome = fltIncome;
+	printf("Array household: %d\n", audtSurveyList[intArrSize - 1]->intHouseholdMembers);
 	
 	system("pause");
 
 	//free(strDate);
-	free(strState);
+	/*free(strState);
 	free(strCounty);
-	free(strRace);
+	free(strRace);*/
 	
 	
 }
@@ -349,8 +365,9 @@ void ValidateIncome(float* fltIncome) {
 // Name: StringCopy
 // Abstract: copies one string to another
 // ------------------------------------------------------------------------------------------
-void StringCopy(char** strDestination, char** strSource)
+void StringCopy(char* strDestination, char* strSource)
 {
+	printf("Stringcopy source: %s\n", strSource);
 	int intIndex = 0;
 	// Copy each character
 	while (strSource[intIndex] != 0)
@@ -359,6 +376,8 @@ void StringCopy(char** strDestination, char** strSource)
 
 		intIndex += 1;
 	}
+	printf("Stringcopy desitination: %s\n", strDestination);
+	
 	// Terminate
 	strDestination[intIndex] = 0;
 }
