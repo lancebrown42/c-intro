@@ -42,6 +42,7 @@ void ValidateRace(char** strRace);
 void ValidateHouseholdMembers(int* intHouseholdMembers);
 void ValidateIncome(float* fltIncome);
 void StringCopy(char* strDestination, char* strSource);
+void WriteFile(FILE* pfOutput, udtSurveyType* audtSurveyList, int intListSize);
 
 
 // ------------------------------------------------------------------------------------------
@@ -58,7 +59,7 @@ void main()
 		printf("%s\n", audtSurveyList->strState);
 	}
 	FILE* pfOutput = OpenFile();
-	fputs("fputs test", pfOutput);
+	WriteFile(pfOutput, audtSurveyList, intListSize);
 	fprintf(pfOutput, "%s", audtSurveyList[0].strRace);
 	
 
@@ -118,7 +119,7 @@ void GetInputs(udtSurveyType** audtSurveyList, int intArrSize) {
 	char* strCounty;
 	char* strRace;
 	char* strDate;
-	strState = (char* ) malloc(20 * sizeof(char));
+	strState = (char* ) malloc(8 * sizeof(char));
 	strCounty =( char* ) malloc(20 * sizeof(char));
 	strRace = (char* ) malloc(20 * sizeof(char));
 
@@ -166,9 +167,9 @@ void GetInputs(udtSurveyType** audtSurveyList, int intArrSize) {
 	system("pause");
 
 	//free(strDate);
-	/*free(strState);
-	free(strCounty);
-	free(strRace);*/
+	//free(strState);
+	//free(strCounty);
+	//free(strRace);
 	
 	
 }
@@ -207,10 +208,10 @@ int ValidateDate(int* intMonth, int* intDay, int* intYear) {
 // Abstract: formats date inputs
 // ------------------------------------------------------------------------------------------
 char* FormatDate(int intMonth, int intDay, int intYear) {
-	char* strDay = malloc(20 * sizeof(char));
-	char* strMonth = malloc(20 * sizeof(char));
-	char* strYear = malloc(20 * sizeof(char));
-	char* strDate = malloc(20 * sizeof(char));
+	char* strDay = malloc(3 * sizeof(char));
+	char* strMonth = malloc(11 * sizeof(char));
+	char* strYear = malloc(5 * sizeof(char));
+	char* strDate = malloc(11 * sizeof(char));
 	sprintf(strDay, "%d", intDay);
 	sprintf(strMonth, "%d", intMonth);
 	sprintf(strYear, "%d", intYear);
@@ -218,7 +219,8 @@ char* FormatDate(int intMonth, int intDay, int intYear) {
 	strcat(strMonth, strDay);
 	strcat(strMonth, "/");
 	strcat(strMonth, strYear);
-	strDate = strMonth;
+	StringCopy(strDate, strMonth);
+
 	free(strDay);
 	free(strMonth);
 	free(strYear);
@@ -380,4 +382,7 @@ void StringCopy(char* strDestination, char* strSource)
 	
 	// Terminate
 	strDestination[intIndex] = 0;
+}
+void WriteFile(FILE* pfOutput, udtSurveyType* audtSurveyList, int intListSize) {
+
 }
