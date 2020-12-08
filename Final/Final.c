@@ -53,16 +53,18 @@ void WriteFile(FILE* pfOutput, udtSurveyType* audtSurveyList, int intListSize);
 // ------------------------------------------------------------------------------------------
 void main()
 {
-	udtSurveyType* audtSurveyList;
+	udtSurveyType* audtSurveyList = malloc(5 * sizeof(udtSurveyType));
 	//udtSurveyType udtSurvey;
 	int intListSize = 0;
 	int intContinue = 1;
 	//InitializeSurvey(&udtSurvey);
-	AllocateArray(&audtSurveyList);
+	//AllocateArray(&audtSurveyList);
 	while (intContinue == 1)
 	{
+		
 		intListSize++;
 		GetInputs(&audtSurveyList, intListSize);
+		printf("%s\n", audtSurveyList[intListSize - 1].strDate);
 		intContinue = CheckContinue(&audtSurveyList, intListSize);
 	}
 	
@@ -84,7 +86,7 @@ void main()
 // Abstract: Allocates survey list
 // ------------------------------------------------------------------------------------------
 void AllocateArray(udtSurveyType** audtSurveyList) {
-	*audtSurveyList = malloc(sizeof(udtSurveyType));
+	*audtSurveyList = malloc(100 * sizeof(udtSurveyType));
 }
 
 // ------------------------------------------------------------------------------------------
@@ -121,7 +123,7 @@ FILE* OpenFile() {
 // Abstract: Receives inputs from the user
 // ------------------------------------------------------------------------------------------
 void GetInputs(udtSurveyType** audtSurveyList, int intArrSize) {
-	
+	udtSurveyType* udtSurvey = audtSurveyList[intArrSize - 1];
 	int intMonth = 0;
 	int intDay = 0;
 	int intYear = 0;
@@ -158,9 +160,9 @@ void GetInputs(udtSurveyType** audtSurveyList, int intArrSize) {
 	ValidateHouseholdMembers(&intHouseholdMembers);
 	ValidateIncome(&fltIncome);
 
-	StringCopy(audtSurveyList[intArrSize-1]->strDate,strDate);
+	StringCopy(audtSurveyList[intArrSize - 1]->strDate,strDate);
 
-	StringCopy(audtSurveyList[intArrSize-1]->strState, strState);
+	StringCopy(audtSurveyList[intArrSize - 1]->strState, strState);
 
 	StringCopy(audtSurveyList[intArrSize - 1]->strCounty, strCounty);
 
