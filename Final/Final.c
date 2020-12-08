@@ -54,12 +54,11 @@ void WriteFile(FILE* pfOutput, udtSurveyType* audtSurveyList, int intListSize);
 void main()
 {
 	udtSurveyType* audtSurveyList;
-	udtSurveyType udtSurvey;
+	//udtSurveyType udtSurvey;
 	int intListSize = 0;
 	int intContinue = 1;
-	InitializeSurvey(&udtSurvey);
+	//InitializeSurvey(&udtSurvey);
 	AllocateArray(&audtSurveyList);
-	audtSurveyList[intListSize] = udtSurvey;
 	while (intContinue == 1)
 	{
 		intListSize++;
@@ -192,7 +191,10 @@ int CheckContinue(udtSurveyType** audtSurveyList, int intArrSize) {
 	scanf(" %d", &intInput);
 	if (intInput == 1) {
 		intReturn = 1;
-		*audtSurveyList = realloc(*audtSurveyList, intArrSize * sizeof(udtSurveyType));
+		printf("Pre-realloc: %d %p\n", sizeof(**audtSurveyList), *audtSurveyList);
+		*audtSurveyList = (udtSurveyType*) realloc(*audtSurveyList, (intArrSize+1) * sizeof(udtSurveyType));
+		printf("Post-realloc: %d %p\n", sizeof(**audtSurveyList), *audtSurveyList);
+
 	}
 	else if (intInput == 2) {
 		intReturn = 0;
