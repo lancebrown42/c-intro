@@ -1,0 +1,15 @@
+﻿  ReadFile.c
+C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(52,17): warning C4013: 'PrintSurveyList' undefined; assuming extern returning int
+C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(77,26): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(78,27): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(79,28): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(80,26): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(198,17): warning C4013: 'TrimWhitespace' undefined; assuming extern returning int
+C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(207,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  LINK : C:\Users\lance\Documents\code\c-intro\Final\Debug\Final.exe not found or not built by the last incremental link; performing full link
+ReadFile.obj : error LNK2005: _InitializeSurvey already defined in WriteFile.obj
+ReadFile.obj : error LNK2005: _StringCopy already defined in WriteFile.obj
+ReadFile.obj : error LNK2005: _main already defined in WriteFile.obj
+ReadFile.obj : error LNK2019: unresolved external symbol _PrintSurveyList referenced in function _main
+ReadFile.obj : error LNK2019: unresolved external symbol _TrimWhitespace referenced in function _AddSurveyToArray
+C:\Users\lance\Documents\code\c-intro\Final\Debug\Final.exe : fatal error LNK1120: 2 unresolved externals

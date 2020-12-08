@@ -1,0 +1,13 @@
+﻿  FinalRead.c
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(82,26): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(83,27): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(84,28): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(85,26): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(215,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(266,35): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(270,37): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(277,37): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(284,37): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(290,43): warning C4047: '==': 'int' differs in levels of indirection from 'void *'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(291,29): warning C4047: '=': 'char' differs in levels of indirection from 'void *'
+  FinalRead.vcxproj -> C:\Users\lance\Documents\code\c-intro\Final\FinalRead\x64\Debug\FinalRead.exe
