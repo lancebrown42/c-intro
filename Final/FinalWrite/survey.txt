@@ -1,10 +1,4 @@
-12/28/1990, Ohio, Hamilton, Caucasian, 1, 1.00
-01/01/2000, Ohio, Hamilton, Caucasian, 1, 1.00
-08/08/2000, Ohio, Hamilton, Caucasian, 1, 1.00
-08/08/2000, Ohio, Hamilton, Caucasian, 1, 1.00
-01/01/2001, Ohio, Hamilton, Caucasian, 1, 1.00
-01/01/2000, Ohio, Hamilton, Caucasian, 1, 1.00
-08/08/2008, Ohio, Hamilton, Caucasian, 1, 1.00
-08/08/2000, Ohio, Hamilton, Caucasian, 1, 1.00
-08/08/2000, Kentucky, Kenton, African American, 2, 2.00
-12/01/2006, Kentucky, Boone, Hispanic, 4, 50000.00
+01/02/1900, Ohio, Hamilton, Caucasian, 1, 10000.00
+02/03/1950, Kentucky, Boone, African American, 2, 800000.00
+06/50/1960, Ohio, Butler, Hispanic, 4, 1986218.25
+05/05/2000, Kentucky, Kenton, Asian, 6, 2.00

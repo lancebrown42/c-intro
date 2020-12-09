@@ -1,15 +1,31 @@
-﻿  ReadFile.c
-C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(52,17): warning C4013: 'PrintSurveyList' undefined; assuming extern returning int
-C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(77,26): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
-C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(78,27): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
-C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(79,28): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
-C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(80,26): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
-C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(198,17): warning C4013: 'TrimWhitespace' undefined; assuming extern returning int
-C:\Users\lance\Documents\code\c-intro\Final\ReadFile.c(207,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  LINK : C:\Users\lance\Documents\code\c-intro\Final\Debug\Final.exe not found or not built by the last incremental link; performing full link
-ReadFile.obj : error LNK2005: _InitializeSurvey already defined in WriteFile.obj
-ReadFile.obj : error LNK2005: _StringCopy already defined in WriteFile.obj
-ReadFile.obj : error LNK2005: _main already defined in WriteFile.obj
-ReadFile.obj : error LNK2019: unresolved external symbol _PrintSurveyList referenced in function _main
-ReadFile.obj : error LNK2019: unresolved external symbol _TrimWhitespace referenced in function _AddSurveyToArray
-C:\Users\lance\Documents\code\c-intro\Final\Debug\Final.exe : fatal error LNK1120: 2 unresolved externals
+﻿  WriteFile.c
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(69,46): warning C4047: 'function': 'udtSurveyType **' differs in levels of indirection from 'udtSurveyType *'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(69,31): warning C4024: 'CheckContinue': different types for formal and actual parameter 1
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(96,26): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(97,27): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(98,28): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(99,26): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(222,13): warning C4477: 'scanf' : format string '%d' requires an argument of type 'int *', but variadic argument 1 has type 'int **'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(222,13): warning C4477: 'scanf' : format string '%d' requires an argument of type 'int *', but variadic argument 2 has type 'int **'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(222,13): warning C4477: 'scanf' : format string '%d' requires an argument of type 'int *', but variadic argument 3 has type 'int **'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(223,30): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(223,21): warning C4024: 'ValidateDate': different types for formal and actual parameter 1
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(223,39): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(223,32): warning C4024: 'ValidateDate': different types for formal and actual parameter 2
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(223,49): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(223,41): warning C4024: 'ValidateDate': different types for formal and actual parameter 3
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(229,14): warning C4477: 'scanf' : format string '%d' requires an argument of type 'int *', but variadic argument 1 has type 'int **'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(229,14): warning C4477: 'scanf' : format string '%d' requires an argument of type 'int *', but variadic argument 2 has type 'int **'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(229,14): warning C4477: 'scanf' : format string '%d' requires an argument of type 'int *', but variadic argument 3 has type 'int **'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(230,31): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(230,22): warning C4024: 'ValidateDate': different types for formal and actual parameter 1
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(230,40): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(230,33): warning C4024: 'ValidateDate': different types for formal and actual parameter 2
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(230,50): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(230,42): warning C4024: 'ValidateDate': different types for formal and actual parameter 3
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(294,26): warning C4047: 'function': 'int *' differs in levels of indirection from 'int **'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(294,17): warning C4024: 'ValidateState': different types for formal and actual parameter 1
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(294,37): warning C4047: 'function': 'char **' differs in levels of indirection from 'char ***'
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(294,28): warning C4024: 'ValidateState': different types for formal and actual parameter 2
+C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\WriteFile.c(420,36): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
+  Final.vcxproj -> C:\Users\lance\Documents\code\c-intro\Final\FinalWrite\Debug\Final.exe

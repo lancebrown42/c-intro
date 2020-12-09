@@ -67,11 +67,9 @@ void main()
 		GetInputs(&audtSurveyList, intListSize);
 		WriteFile(pfOutput, audtSurveyList, intListSize);
 		intContinue = CheckContinue(&audtSurveyList, intListSize);
-	}
-	
-	
-	for (int i = 0; i < intListSize; i++) {
-		printf("%s\n", audtSurveyList.strState);
+		if (intContinue == 1) {
+			fprintf(pfOutput, "\n");
+		}
 	}
 	fclose(pfOutput);
 	
@@ -438,7 +436,7 @@ void StringCopy(char* strDestination, char* strSource)
 // Abstract: writes to the file
 // ------------------------------------------------------------------------------------------
 void WriteFile(FILE* pfOutput, udtSurveyType audtSurveyList, int intListSize) {
-		fprintf(pfOutput, "%s, %s, %s, %s, %d, %.2f\n", audtSurveyList.strDate, audtSurveyList.strState, audtSurveyList.strCounty, audtSurveyList.strRace, audtSurveyList.intHouseholdMembers, audtSurveyList.fltIncome);
+		fprintf(pfOutput, "%s, %s, %s, %s, %d, %.2f", audtSurveyList.strDate, audtSurveyList.strState, audtSurveyList.strCounty, audtSurveyList.strRace, audtSurveyList.intHouseholdMembers, audtSurveyList.fltIncome);
 	
 	
 	

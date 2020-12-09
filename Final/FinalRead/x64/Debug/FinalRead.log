@@ -1,13 +1,20 @@
 ﻿  FinalRead.c
-C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(82,26): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
-C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(83,27): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
-C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(84,28): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
-C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(85,26): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
-C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(215,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(266,35): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
-C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(270,37): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
-C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(277,37): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
-C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(284,37): warning C4047: '!=': 'int' differs in levels of indirection from 'void *'
-C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(290,43): warning C4047: '==': 'int' differs in levels of indirection from 'void *'
-C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(291,29): warning C4047: '=': 'char' differs in levels of indirection from 'void *'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(93,26): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(94,27): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(95,28): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(96,26): warning C4047: '=': 'char' differs in levels of indirection from 'char [1]'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(172,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char [2]'
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(518,65): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(583,70): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(589,64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(595,61): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(601,64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(607,58): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(613,70): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(682,71): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(689,89): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(696,68): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(703,59): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(710,59): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\lance\Documents\code\c-intro\Final\FinalRead\FinalRead.c(804,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   FinalRead.vcxproj -> C:\Users\lance\Documents\code\c-intro\Final\FinalRead\x64\Debug\FinalRead.exe
