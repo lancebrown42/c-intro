@@ -15,7 +15,7 @@
 // ------------------------------------------------------------------------------------------
 // Constants
 // ------------------------------------------------------------------------------------------
-const int intARRAY_SIZE = 100;
+//const int intARRAY_SIZE = 100;
 const float fltPoverty[5] = { 12000, 18000, 25000, 30000, 40000 };
 // ------------------------------------------------------------------------------------------
 // User Defined Types
@@ -32,7 +32,7 @@ typedef struct {
 // ------------------------------------------------------------------------------------------
 // Prototypes
 // ------------------------------------------------------------------------------------------
-void InitializeSurveyList(udtSurveyType audtSurveyList[]);
+void InitializeSurveyList(udtSurveyType audtSurveyList[], int intLines);
 void PopulateSurveyList(udtSurveyType audtSurveyList[]);
 void InitializeSurvey(udtSurveyType* udtSurvey);
 void StringCopy(char* strDestination, char* strSource);
@@ -54,9 +54,27 @@ int CountTotals(udtSurveyType audtSurveyList[]);
 // ------------------------------------------------------------------------------------------
 void main()
 {
+	
+	FILE* pfilInput;
+	char chrCheck;
+	int intLines = 1;
+	int intInput = OpenInputFile("..\\FinalWrite\\survey.txt", &pfilInput);
 	char chrChoice = 'Z';
-	udtSurveyType audtSurveyList[100];
-	InitializeSurveyList(audtSurveyList);
+	if (intInput == 1) {
+		for (chrCheck = getc(pfilInput); chrCheck != EOF; chrCheck = getc(pfilInput)) {
+			if (chrCheck == '\n') // Increment count if this character is newline 
+				intLines++;
+		}
+		fclose(pfilInput);
+	}
+	printf("lines %d\n", intLines);
+
+	printf("sizeof udt %d\n", sizeof(udtSurveyType));
+	printf("sizeof malloc %d\n", intLines * sizeof(udtSurveyType));
+
+	udtSurveyType* audtSurveyList = malloc(intLines * sizeof(udtSurveyType));
+
+	InitializeSurveyList(audtSurveyList, intLines);
 	PopulateSurveyList(audtSurveyList);
 	while (chrChoice != 'X') {
 		chrChoice = PromptChoice();
@@ -65,6 +83,7 @@ void main()
 		}
 		PrintSelection(audtSurveyList, chrChoice);
 	}
+	free(audtSurveyList);
 	//PrintSurveyList(audtSurveyList);
 	system("pause");
 }
@@ -74,9 +93,10 @@ void main()
 // Name: main
 // Abstract: This is where the program starts
 // ------------------------------------------------------------------------------------------
-void InitializeSurveyList(udtSurveyType audtSurveyList[]) {
+void InitializeSurveyList(udtSurveyType audtSurveyList[], int intLines) {
 	int intIndex = 0;
-	for (intIndex = 0; intIndex < intARRAY_SIZE; intIndex += 1)
+	
+	for (intIndex = 0; intIndex < intLines; intIndex += 1)
 	{
 		// Pass a single array element by pointer
 		InitializeSurvey(&audtSurveyList[intIndex]);
@@ -144,7 +164,7 @@ void PopulateSurveyList(udtSurveyType audtSurveyList[]) {
 // Abstract: This is where the program starts
 // ------------------------------------------------------------------------------------------
 char PromptChoice() {
-	char chrChoice = 'Z';
+	char chrChoice;
 	printf("\n\nSelect an option from the following menu:\n");
 	printf("A.	Total Households Surveyed\n");
 	printf("B.	Total Households Surveyed per County\n");
@@ -169,7 +189,7 @@ char PromptChoice() {
 // Abstract: This is where the program starts
 // ------------------------------------------------------------------------------------------
 char ValidateChoice(char chrChoice) {
-	char chrReturn = "Z";
+	char chrReturn;
 	if ((chrChoice >= 65 && chrChoice <= 73) ||  chrChoice == 88 ) {
 		chrReturn = chrChoice;
 	}
@@ -813,17 +833,17 @@ void AddSurveyToArray(char strInput[], udtSurveyType* udtSurvey, udtSurveyType a
 // ------------------------------------------------------------------------------------------
 void PrintSurveyList(udtSurveyType audtSurveyList[])
 {
-	int intIndex = 0;
-	int intEntry = 0;
-	for (intIndex = 0; intIndex < intARRAY_SIZE; intIndex += 1)
-	{
-		// Pass a single array element by pointer
-		if (audtSurveyList[intIndex].intHouseholdMembers != 0) {
-			intEntry++;
-			PrintSurvey(intEntry, audtSurveyList[intIndex]);
+	//int intIndex = 0;
+	//int intEntry = 0;
+	//for (intIndex = 0; intIndex < intARRAY_SIZE; intIndex += 1)
+	//{
+	//	// Pass a single array element by pointer
+	//	if (audtSurveyList[intIndex].intHouseholdMembers != 0) {
+	//		intEntry++;
+	//		PrintSurvey(intEntry, audtSurveyList[intIndex]);
 
-		}
-	}
+	//	}
+	//}
 }
 
 // ------------------------------------------------------------------------------------------

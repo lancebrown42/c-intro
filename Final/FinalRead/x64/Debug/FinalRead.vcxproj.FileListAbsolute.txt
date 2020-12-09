@@ -1,2 +1,4 @@
 C:\Users\lance\Documents\code\c-intro\Final\FinalRead\x64\Debug\FinalRead.exe
 C:\Users\lance\Documents\code\c-intro\Final\FinalRead\x64\Debug\FinalRead.pdb
+C:\Users\lance\code\c-intro\Final\FinalRead\x64\Debug\FinalRead.exe
+C:\Users\lance\code\c-intro\Final\FinalRead\x64\Debug\FinalRead.pdb
