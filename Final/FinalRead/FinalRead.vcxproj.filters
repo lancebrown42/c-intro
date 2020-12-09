@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FinalRead.c">
+    <ClCompile Include="FinalPart2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

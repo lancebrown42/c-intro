@@ -1,4 +1,4 @@
 01/02/1900, Ohio, Hamilton, Caucasian, 1, 10000.00
 02/03/1950, Kentucky, Boone, African American, 2, 800000.00
 06/50/1960, Ohio, Butler, Hispanic, 4, 1986218.25
-05/05/2000, Kentucky, Kenton, Asian, 6, 2.00
+05/05/2000, Kentucky, Kenton, Asian, 6, 2.0004/23/1982, Kentucky, Boone, African American, 4, 230000.00
